@@ -1,0 +1,238 @@
+﻿@model CursoASPMVC2.ViewModel.CreateInvoiceComplete
+
+@{
+    ViewBag.Title = "CreateInvoiceComplete";
+}
+
+<h2>CreateInvoiceComplete</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Invoice</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerId, "CustomerId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CustomerId", Model.Customers, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Reference, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Reference, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Reference, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>*@
+    </div>
+
+    <div class="form-inline">
+        <h4>InvoiceLine</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductId, "ProductId", htmlAttributes: new { @class = "control-label " })
+            <div class="">
+                @Html.DropDownList("ProductId", Model.Products, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProductId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label " })
+            <div class="">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label " })
+            <div class="">
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label " })
+            <div class="">
+                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label " for="CreateNewLine">Add</label>
+            <div>
+                @Html.ActionLink("Add New Line", "CreateNewLine", "Home", null, new { id = "CreateNewLine", @class = "btn btn-default" } )
+            </div>
+        </div>
+        <hr />
+    </div>
+}
+
+<table class="table" id="InvoiceLinesTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceLines.ElementAt(0).Product.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceLines.ElementAt(0).Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceLines.ElementAt(0).Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvoiceLines.ElementAt(0).UnitPrice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.InvoiceLines)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteInvoiceLine", new { id = item.InvoiceLineId, @class = "DeleteInvoiceLine" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    <input type="submit" value="Create Invoice" class="btn btn-default" id="CreateInvoice" />
+</p>
+<div>
+    @Html.ActionLink("Back to List", "Invoices")
+</div>
+
+@section scripts
+{
+<script type="text/javascript">
+
+    var invoiceLine = function (ProductId, Title, Quantity, UnitPrice) {
+        //InvoiceId  No hace falta
+        this.ProductId = ProductId;
+        this.Title = Title;
+        this.Quantity = Quantity;
+        this.UnitPrice = UnitPrice;
+    };
+    var invoice = function (CustomerId, Reference, Date, InvoiceLines) {
+        this.CustomerId = CustomerId;
+        this.Reference = Reference;
+        this.Date = Date;
+        this.InvoiceLines = InvoiceLines;
+    };
+    var invoiceLines = [];
+
+    $(document).ready(function () {
+
+        $('#CreateNewLine').on('click', function (e) {
+            e.preventDefault();
+            var ProductId = $('#ProductId').val();
+            var Title = $('#Title').val();
+            var Quantity = $('#Quantity').val();
+            var UnitPrice = $('#UnitPrice').val();
+
+            invoiceLines.push(new invoiceLine(ProductId, Title, Quantity, UnitPrice));
+
+            //Limpiar inputs
+            $('#ProductId').val($("#ProductId option:first").val()); //Seleccionar el primer elemento
+            $('#Title').val('');
+            $('#Quantity').val(0);
+            $('#UnitPrice').val(0);
+
+            //Llamada al controlador para insertar la vista parcial que contiene una fila de la tabla
+            $.ajax({
+                //async: false,
+                cache: false,
+                type: 'post',
+                url: '@Url.Action("AddRowToInvoiceLineTable", "Home")',
+                data: { ProductId: ProductId, Title: Title, Quantity: Quantity, UnitPrice: UnitPrice },
+                success: function (result) {
+                    $('#InvoiceLinesTable > tbody:last').append(result);
+                    //Asociar evento al botón delete: Mirar $(document).on('click', '.DeleteInvoiceLine', function (e)
+                },
+                error: function (jqXHRequest, textStatus, errorThrown) {
+                    alert("Error: " + textStatus + " : " + errorThrown);
+                }
+            });
+        });
+
+        $('#CreateInvoice').on('click', function (e) {
+            e.preventDefault();
+            var CustomerId = $('#CustomerId').val();
+            var Reference = $('#Reference').val();
+            var Date = $('#Date').val();
+            var invoice1 = new invoice(CustomerId, Reference, Date, invoiceLines);
+
+            //Realizar llamada a la acción del controlador y pasarle el viewmodel
+            var data_to_send = JSON.stringify({ CreateInvoiceComplete: invoice1 }); //serializar el objeto utilizando el nombre del parámetro de la acción del controlador
+            $.ajax({
+                //async: false, //false -> llamada síncrona
+                cache: false,
+                type: "POST",
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8", //Importante si enviamos un objeto complejo mediante JSON.stringify
+                url: '@Url.Action("CreateInvoiceComplete", "Home")',
+                data: data_to_send,
+                success: function (data, textStatus) {
+                    if (data.success) {
+                        window.location.href = '@Url.Action("Invoices", "Home")'
+                    }
+                },
+                error: function (jqXHRequest, textStatus, errorThrown) {
+                    alert("Error: " + textStatus + " : " + errorThrown);
+                },
+                complete: function () {
+                    //$('#modal-finish-message').html('Nota de gasto guardada! Un momento, por favor...');
+                    alert("Guardado con éxito!");
+                }
+            });
+        });
+
+        //$('.DeleteInvoiceLine').on('click', '', function (e) {
+        //    e.preventDefault();
+        //    alert('Delete!');
+        //});
+        $(document).on('click', '.DeleteInvoiceLine', function (e) { //Bindado de eventos en elementos creados dinámincamente
+            e.preventDefault();
+            //alert('Delete!');
+            //alert($(this).closest('tr').index());
+            invoiceLines.splice($(this).closest('tr').index() - 1, 1);
+            $(this).closest('tr').remove();
+        });
+    });
+</script>
+}

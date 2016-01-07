@@ -1,0 +1,19 @@
+﻿@model CursoASPMVC2.ViewModel._InvoiceLineTableRow
+
+<tr>
+    <td>
+        @Html.DisplayFor(m => m.Product.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.Title)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(m => m.UnitPrice)
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "DeleteInvoiceLine", "Home", null, new { @class = "DeleteInvoiceLine" })
+    </td>
+</tr>

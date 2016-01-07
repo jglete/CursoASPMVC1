@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CursoASPMVC2.Domain.Invoice>
+
+@{
+    ViewBag.Title = "Invoices";
+}
+
+<h2>Invoices</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateInvoiceVM")
+    @Html.ActionLink("Create New Complete", "CreateInvoiceComplete")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Reference)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRegistered)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reference)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsRegistered)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditInvoice", new { id=item.InvoiceId }) |
+            @Html.ActionLink("Details", "DetailsInvoice", new { id=item.InvoiceId }) |
+            @Html.ActionLink("Delete", "DeleteInvoice", new { id=item.InvoiceId })
+        </td>
+    </tr>
+}
+
+</table>

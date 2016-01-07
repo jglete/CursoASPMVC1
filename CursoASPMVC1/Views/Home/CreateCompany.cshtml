@@ -1,0 +1,20 @@
+﻿@model CursoASPMVC1.Models.Company
+
+@{
+    ViewBag.Title = "CreateCompany";
+}
+
+<h2>CreateCompany</h2>
+
+@using (Html.BeginForm("CreateCompany", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <fieldset>
+        Title @Html.TextBoxFor(m => m.Title)
+        Address @Html.TextBoxFor(m => m.Address)
+        Creation @Html.TextBoxFor(m => m.CreationDate)
+        @Html.ValidationMessageFor(m => m.CreationDate)
+        <input type="submit" value="Guardar" />
+    </fieldset>
+}
