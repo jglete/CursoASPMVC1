@@ -13,9 +13,13 @@ namespace CursoASPMVC2
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            //UnityConfiguration.ConfigureIoCContainer();
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
             AutoMapperConfiguration.ConfigureAutoMapper();
         }
     }

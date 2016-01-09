@@ -2,4 +2,3 @@ C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.
 C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Domain\bin\Debug\CursoASPMVC2.Domain.pdb
 C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Domain\obj\Debug\CursoASPMVC2.Domain.dll
 C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Domain\obj\Debug\CursoASPMVC2.Domain.pdb
-C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Domain\obj\Debug\CursoASPMVC2.Domain.csprojResolveAssemblyReference.cache

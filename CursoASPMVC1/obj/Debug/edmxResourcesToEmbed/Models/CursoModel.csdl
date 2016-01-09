@@ -19,19 +19,6 @@
     <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Invoices" Relationship="CursoASPMVCModel.FK_Invcoice_Customer1" FromRole="Customer" ToRole="Invoice" />
   </EntityType>
-  <EntityType Name="InvoiceLine">
-    <Key>
-      <PropertyRef Name="InvoiceLineId" />
-    </Key>
-    <Property Name="InvoiceLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="InvoiceId" Type="Int32" Nullable="false" />
-    <Property Name="ProductId" Type="Int32" Nullable="false" />
-    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
-    <NavigationProperty Name="Product" Relationship="Self.FK_InvoiceLine_Product" FromRole="InvoiceLine" ToRole="Product" />
-    <NavigationProperty Name="Invoice" Relationship="CursoASPMVCModel.FK_InvoiceLine_Invcoice1" FromRole="InvoiceLine" ToRole="Invoice" />
-  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="ProductId" />
@@ -39,29 +26,12 @@
     <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
-    <NavigationProperty Name="InvoiceLines" Relationship="Self.FK_InvoiceLine_Product" FromRole="Product" ToRole="InvoiceLine" />
+    <NavigationProperty Name="InvoiceLines" Relationship="CursoASPMVCModel.FK_InvoiceLine_Product" FromRole="Product" ToRole="InvoiceLine" />
   </EntityType>
-  <Association Name="FK_InvoiceLine_Product">
-    <End Role="Product" Type="Self.Product" Multiplicity="1" />
-    <End Role="InvoiceLine" Type="Self.InvoiceLine" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Product">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="InvoiceLine">
-        <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="CursoASPMVCEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Companies" EntityType="Self.Company" />
     <EntitySet Name="Customers" EntityType="Self.Customer" />
-    <EntitySet Name="InvoiceLines" EntityType="Self.InvoiceLine" />
     <EntitySet Name="Products" EntityType="Self.Product" />
-    <AssociationSet Name="FK_InvoiceLine_Product" Association="Self.FK_InvoiceLine_Product">
-      <End Role="Product" EntitySet="Products" />
-      <End Role="InvoiceLine" EntitySet="InvoiceLines" />
-    </AssociationSet>
     <EntitySet Name="Invoices" EntityType="CursoASPMVCModel.Invoice" />
     <AssociationSet Name="FK_Invcoice_Company1" Association="CursoASPMVCModel.FK_Invcoice_Company1">
       <End Role="Company" EntitySet="Companies" />
@@ -71,8 +41,13 @@
       <End Role="Customer" EntitySet="Customers" />
       <End Role="Invoice" EntitySet="Invoices" />
     </AssociationSet>
-    <AssociationSet Name="FK_InvoiceLine_Invcoice1" Association="CursoASPMVCModel.FK_InvoiceLine_Invcoice1">
+    <EntitySet Name="InvoiceLines" EntityType="CursoASPMVCModel.InvoiceLine" />
+    <AssociationSet Name="FK_InvoiceLine_Invcoice" Association="CursoASPMVCModel.FK_InvoiceLine_Invcoice">
       <End Role="Invoice" EntitySet="Invoices" />
+      <End Role="InvoiceLine" EntitySet="InvoiceLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvoiceLine_Product" Association="CursoASPMVCModel.FK_InvoiceLine_Product">
+      <End Role="Product" EntitySet="Products" />
       <End Role="InvoiceLine" EntitySet="InvoiceLines" />
     </AssociationSet>
   </EntityContainer>
@@ -90,7 +65,7 @@
     <Property Name="CustomerAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Company" Relationship="CursoASPMVCModel.FK_Invcoice_Company1" FromRole="Invoice" ToRole="Company" />
     <NavigationProperty Name="Customer" Relationship="CursoASPMVCModel.FK_Invcoice_Customer1" FromRole="Invoice" ToRole="Customer" />
-    <NavigationProperty Name="InvoiceLines" Relationship="CursoASPMVCModel.FK_InvoiceLine_Invcoice1" FromRole="Invoice" ToRole="InvoiceLine" />
+    <NavigationProperty Name="InvoiceLines" Relationship="CursoASPMVCModel.FK_InvoiceLine_Invcoice" FromRole="Invoice" ToRole="InvoiceLine" />
   </EntityType>
   <Association Name="FK_Invcoice_Company1">
     <End Type="CursoASPMVCModel.Company" Role="Company" Multiplicity="1" />
@@ -116,7 +91,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_InvoiceLine_Invcoice1">
+  <EntityType Name="InvoiceLine">
+    <Key>
+      <PropertyRef Name="InvoiceLineId" />
+    </Key>
+    <Property Name="InvoiceLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+    <NavigationProperty Name="Invoice" Relationship="CursoASPMVCModel.FK_InvoiceLine_Invcoice" FromRole="InvoiceLine" ToRole="Invoice" />
+    <NavigationProperty Name="Product" Relationship="CursoASPMVCModel.FK_InvoiceLine_Product" FromRole="InvoiceLine" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_InvoiceLine_Invcoice">
     <End Type="CursoASPMVCModel.Invoice" Role="Invoice" Multiplicity="1" />
     <End Type="CursoASPMVCModel.InvoiceLine" Role="InvoiceLine" Multiplicity="*" />
     <ReferentialConstraint>
@@ -125,6 +113,18 @@
       </Principal>
       <Dependent Role="InvoiceLine">
         <PropertyRef Name="InvoiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvoiceLine_Product">
+    <End Type="CursoASPMVCModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="CursoASPMVCModel.InvoiceLine" Role="InvoiceLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="InvoiceLine">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
