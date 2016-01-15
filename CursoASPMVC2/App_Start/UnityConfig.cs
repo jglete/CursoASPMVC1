@@ -47,6 +47,7 @@ namespace CursoASPMVC2.App_Start
             container.RegisterType<System.Data.Entity.DbContext, CursoASPMVC2.Domain.CursoASPMVCEntities>(new PerRequestLifetimeManager());
             container.RegisterType<CursoASPMVC2.Domain.Contracts.ICompanyRepository, CursoASPMVC2.Data.Repository.CompanyRepository>(new PerRequestLifetimeManager());
             container.RegisterType<CursoASPMVC2.Service.IAppService, CursoASPMVC2.Service.AppService>(new PerRequestLifetimeManager());
+            container.RegisterType<CursoASPMVC2.Domain.Contracts.IInvoiceService, CursoASPMVC2.Domain.Services.InvoiceService>(new PerRequestLifetimeManager());
 
             //Unit of work
             container.RegisterType<CursoASPMVC2.Domain.Contracts.ICompanyUoW, CursoASPMVC2.Data.Repository.CompanyUoW>(new PerRequestLifetimeManager());

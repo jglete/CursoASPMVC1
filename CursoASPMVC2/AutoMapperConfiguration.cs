@@ -25,6 +25,9 @@ namespace CursoASPMVC2
                     Value = u.ProductId.ToString()
                 }).ToList()));
 
+            //Capa de aplicación
+            AutoMapper.Mapper.CreateMap<CursoASPMVC2.Domain.Invoice, CursoASPMVC2.Service.DTO.Invoice>();
+
 #if DEBUG
             //AutoMapper.Mapper.AssertConfigurationIsValid();
 #endif

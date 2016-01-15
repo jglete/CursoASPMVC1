@@ -12,3 +12,5 @@ C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.
 C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Service\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Service\obj\Debug\CursoASPMVC2.Service.dll
 C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Service\obj\Debug\CursoASPMVC2.Service.pdb
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Service\bin\Debug\AutoMapper.dll
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC2.Service\bin\Debug\AutoMapper.xml

@@ -10,11 +10,15 @@ namespace CursoASPMVC2.Service
     {
         private Domain.Contracts.ICompanyRepository _Repository;
         private Domain.Contracts.ICompanyUoW _UoW;
+        private Domain.Contracts.IInvoiceService _InvoiceService;
 
-        public AppService(Domain.Contracts.ICompanyRepository CompanyRepository, Domain.Contracts.ICompanyUoW UoW)
+        public AppService(Domain.Contracts.ICompanyRepository CompanyRepository, 
+            Domain.Contracts.ICompanyUoW UoW,
+            Domain.Contracts.IInvoiceService InvoiceService)
         {
             this._Repository = CompanyRepository;
             this._UoW = UoW;
+            this._InvoiceService = InvoiceService;
         }
 
         public ICollection<Domain.Invoice> AllInvoices()
@@ -32,11 +36,18 @@ namespace CursoASPMVC2.Service
         }
         public DTO.Invoice GetNewInvoice()
         {
-            DTO.Invoice mInvoice = new DTO.Invoice();
-            mInvoice.Reference = System.DateTime.Now.Ticks.ToString();
-            mInvoice.Customers = this._Repository.AllCustomers();
-            mInvoice.Products = this._Repository.AllProducts();
-            return mInvoice;
+            //Domain.Services.InvoiceService mDomainService = new Domain.Services.InvoiceService();
+            //Domain.Invoice mInvoice = mDomainService.GetNewInvoice();
+            
+            Domain.Invoice mInvoice = this._InvoiceService.GetNewInvoice();
+            DTO.Invoice mInvoiceDTO = new DTO.Invoice();
+
+            AutoMapper.Mapper.Map<CursoASPMVC2.Domain.Invoice, CursoASPMVC2.Service.DTO.Invoice>(mInvoice, mInvoiceDTO);
+
+            mInvoiceDTO.Customers = this._Repository.AllCustomers();
+            mInvoiceDTO.Products = this._Repository.AllProducts();
+
+            return mInvoiceDTO;
         }
 
         public void Dispose()
