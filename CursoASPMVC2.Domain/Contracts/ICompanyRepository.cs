@@ -10,5 +10,7 @@
     {
         void AddInvoice(Invoice Invoice);
         ICollection<Domain.Invoice> AllInvoices();
+        ICollection<Domain.Customer> AllCustomers();
+        ICollection<Domain.Product> AllProducts();
     }
 }

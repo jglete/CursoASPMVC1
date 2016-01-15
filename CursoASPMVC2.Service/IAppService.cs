@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace CursoASPMVC2.Service
 {
-    public interface IAppService
+    public interface IAppService: IDisposable
     {
         ICollection<Domain.Invoice> AllInvoices();
+        ICollection<Domain.Customer> AllCustomers();
+        ICollection<Domain.Product> AllProducts();
+        DTO.Invoice GetNewInvoice();
     }
 }

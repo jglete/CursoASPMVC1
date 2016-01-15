@@ -43,10 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Invoice.cs" />
+    <Compile Include="Classes\InvoiceLine.cs" />
     <Compile Include="Company.cs">
       <DependentUpon>CursoModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Contracts\ICompanyRepository.cs" />
+    <Compile Include="Contracts\ICompanyUoW.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="CursoModel.cs">
       <AutoGen>True</AutoGen>

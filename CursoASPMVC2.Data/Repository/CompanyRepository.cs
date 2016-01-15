@@ -21,8 +21,18 @@
         }
         public ICollection<Domain.Invoice> AllInvoices()
         {
-            //return this.GetAll().FirstOrDefault().Invoices;
-            return this.context.Set<Domain.Company>().FirstOrDefault().Invoices;
+            //return this.GetAll().FirstOrDefault().Invoices; //Hacemos uso del repositorio con tipo Company.
+            return this.context.Set<Domain.Company>().FirstOrDefault().Invoices; //Recogemos directamente del repositorio genérico.
+        }
+        public ICollection<Domain.Customer> AllCustomers()
+        {
+            //return this.GetAll().FirstOrDefault().Invoices; //Hacemos uso del repositorio con tipo Company.
+            return this.context.Set<Domain.Customer>().ToList(); //Recogemos directamente del repositorio genérico.
+        }
+        public ICollection<Domain.Product> AllProducts()
+        {
+            //return this.GetAll().FirstOrDefault().Invoices; //Hacemos uso del repositorio con tipo Company.
+            return this.context.Set<Domain.Product>().ToList(); //Recogemos directamente del repositorio genérico.
         }
     }
 }

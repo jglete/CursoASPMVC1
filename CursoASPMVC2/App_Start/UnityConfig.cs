@@ -37,9 +37,20 @@ namespace CursoASPMVC2.App_Start
 
             // TODO: Register your types here
             // container.RegisterType<IProductRepository, ProductRepository>();
+            //string _connectionString = @"metadata=res://*/CursoModel.csdl|res://*/CursoModel.ssdl|res://*/CursoModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=VAIO\SQLEXPRESS;initial catalog=CursoASPMVC;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;";
+            
+            //string _connectionString = @"metadata=res://*/CursoModel.csdl|res://*/CursoModel.ssdl|res://*/CursoModel.msl;provider=System.Data.SqlClient;provider connection string="";data source=VAIO\SQLEXPRESS;initial catalog=CursoASPMVC;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework"";";
+            //container.RegisterType<System.Data.Entity.DbContext, CursoASPMVC2.Domain.CursoASPMVCEntities>(new PerRequestLifetimeManager(), new InjectionConstructor(_connectionString));
+            //container.RegisterType<System.Data.Entity.DbContext, System.Data.Entity.DbContext>(new PerRequestLifetimeManager(), new InjectionConstructor(_connectionString));
+            //container.RegisterType<System.Data.Entity.DbContext>(new PerRequestLifetimeManager(), new InjectionConstructor(_connectionString));
+
             container.RegisterType<System.Data.Entity.DbContext, CursoASPMVC2.Domain.CursoASPMVCEntities>(new PerRequestLifetimeManager());
             container.RegisterType<CursoASPMVC2.Domain.Contracts.ICompanyRepository, CursoASPMVC2.Data.Repository.CompanyRepository>(new PerRequestLifetimeManager());
             container.RegisterType<CursoASPMVC2.Service.IAppService, CursoASPMVC2.Service.AppService>(new PerRequestLifetimeManager());
+
+            //Unit of work
+            container.RegisterType<CursoASPMVC2.Domain.Contracts.ICompanyUoW, CursoASPMVC2.Data.Repository.CompanyUoW>(new PerRequestLifetimeManager());
+            container.RegisterType(typeof(Domain.Contracts.IRepository<>), typeof(Data.Repository.Repository<>));
         }
     }
 }
