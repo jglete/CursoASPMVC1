@@ -126,9 +126,15 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="CustomAttributes\LoggingFilterAttribute.cs" />
+    <Compile Include="CustomExtensions\StringExtensions.cs" />
+    <Compile Include="CustomHelpers\HtmlHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ModelsPartials\Company.cs" />
+    <Compile Include="ModelsPartials\CompanyMetadata.cs" />
+    <Compile Include="ModelsPartials\CompanyValidation.cs" />
     <Compile Include="Models\Company.cs">
       <DependentUpon>CursoModel.tt</DependentUpon>
     </Compile>

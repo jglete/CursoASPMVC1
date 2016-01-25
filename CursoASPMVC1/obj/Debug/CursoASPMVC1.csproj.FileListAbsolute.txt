@@ -27,3 +27,4 @@ c:\users\iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC1\
 c:\users\iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC1\bin\EntityFramework.SqlServer.dll
 c:\users\iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC1\bin\EntityFramework.xml
 c:\users\iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC1\bin\EntityFramework.SqlServer.xml
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoASPMVC1\CursoASPMVC1\obj\Debug\CursoASPMVC1.csprojResolveAssemblyReference.cache

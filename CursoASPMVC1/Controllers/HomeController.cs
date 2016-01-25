@@ -14,11 +14,14 @@ namespace CursoASPMVC1.Controllers
         {
             Entities = new Models.CursoASPMVCEntities();
         }
+
+        [CursoASPMVC1.CustomAttributes.LoggingFilter]
         public ActionResult Index()
         {
             Models.Company mCompany = Entities.Companies.FirstOrDefault(m => m.CompanyId > 0);
             ViewBag.Company = mCompany != default(Models.Company) ? mCompany.Title : "No hay compañías";
             ViewBag.CompanyId = mCompany != default(Models.Company) ? mCompany.CompanyId : 0;
+            ViewBag.TextoPrueba = "Prueba".ToString().SecureSubString(2, 7);
             return View();
         }
         public ActionResult About()

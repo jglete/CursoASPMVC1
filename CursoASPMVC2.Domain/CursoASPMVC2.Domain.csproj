@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IInvoiceService.cs" />
+    <Compile Include="Entities\Company.cs" />
+    <Compile Include="Entities\CompanyMetadata.cs" />
+    <Compile Include="Entities\CompanyValidation.cs" />
     <Compile Include="Entities\Invoice.cs" />
     <Compile Include="Entities\InvoiceLine.cs" />
     <Compile Include="Company.cs">
