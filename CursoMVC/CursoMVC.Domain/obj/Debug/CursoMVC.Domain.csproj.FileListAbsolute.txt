@@ -1,0 +1,5 @@
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Domain\bin\Debug\CursoMVC.Domain.dll
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Domain\bin\Debug\CursoMVC.Domain.pdb
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Domain\obj\Debug\CursoMVC.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Domain\obj\Debug\CursoMVC.Domain.dll
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Domain\obj\Debug\CursoMVC.Domain.pdb

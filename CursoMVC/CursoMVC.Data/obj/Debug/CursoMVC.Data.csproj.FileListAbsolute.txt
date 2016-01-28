@@ -1,0 +1,12 @@
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\CursoMVC.Data.dll.config
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\CursoMVC.Data.dll
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\CursoMVC.Data.pdb
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\CursoMVC.Domain.dll
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\EntityFramework.dll
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\CursoMVC.Domain.pdb
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\EntityFramework.xml
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\obj\Debug\CursoMVC.Data.csprojResolveAssemblyReference.cache
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\obj\Debug\CursoMVC.Data.dll
+C:\Users\Iagoba\documents\visual studio 2013\Projects\CursoMVC.Presentation\CursoMVC.Data\obj\Debug\CursoMVC.Data.pdb
